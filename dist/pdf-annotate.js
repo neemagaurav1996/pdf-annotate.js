@@ -919,6 +919,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {Element} The annotation element or null if one can't be found
 	 */
 	function findAnnotationAtPoint(x, y) {
+	  x-=5;
+	  y-=5;
 	  var svg = findSVGAtPoint(x, y);
 	  if (!svg) {
 	    return;
