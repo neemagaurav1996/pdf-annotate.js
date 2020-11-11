@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	var _PDFJSAnnotate = __webpack_require__(1);
-	
+
 	var _PDFJSAnnotate2 = _interopRequireDefault(_PDFJSAnnotate);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -94,6 +94,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _UI = __webpack_require__(28);
 	
 	var _UI2 = _interopRequireDefault(_UI);
+
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -513,7 +514,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//   mouseOverNode = target;
 	// });
-	
+		
+
 	function fireEvent() {
 	  emitter.emit.apply(emitter, arguments);
 	};
@@ -2825,6 +2827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Delete currently selected annotation
 	 */
 	function deleteAnnotation() {
+
 	  if (!overlay) {
 	    return;
 	  }

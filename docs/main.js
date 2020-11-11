@@ -3,6 +3,7 @@ import PDFJSAnnotate from '../';
 import initColorPicker from './shared/initColorPicker';
 
 const { UI } = PDFJSAnnotate;
+
 const documentId = 'example.pdf';
 let PAGE_HEIGHT;
 let RENDER_OPTIONS = {
@@ -30,6 +31,9 @@ document.getElementById('content-wrapper').addEventListener('scroll', function (
     }
   }
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 
 function render() {
   PDFJS.getDocument(RENDER_OPTIONS.documentId).then((pdf) => {
@@ -296,6 +300,22 @@ render();
     }
   }
   document.querySelector('a.clear').addEventListener('click', handleClearClick);
+})();
+
+// Undo button
+(function () {
+  function handleUndoClick(e) {
+    let annotations =  JSON.parse(localStorage.getItem(`${RENDER_OPTIONS.documentId}/annotations`));
+    let removed = annotations.pop();
+    PDFJSAnnotate.getStoreAdapter().deleteAnnotation(RENDER_OPTIONS.documentId,removed.uuid);
+
+    let nodes = document.querySelectorAll('[data-pdf-annotate-id="' + removed.uuid + '"]');
+    [].concat(_toConsumableArray(nodes)).forEach(function (n) {
+      n.parentNode.removeChild(n);
+    });
+
+  }
+  document.querySelector('a.undo').addEventListener('click', handleUndoClick);
 })();
 
 // Comment stuff
